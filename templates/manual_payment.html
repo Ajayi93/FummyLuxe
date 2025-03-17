@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="payment">
+    <h1>Bank Transfer Payment</h1>
+    <p>Please make a transfer to the bank details below:</p>
+    
+    <div class="bank-details">
+        <p><strong>Bank Name:</strong> Polaris Bank</p>
+        <p><strong>Account Name:</strong> FummyLuxe</p>
+        <p><strong>Account Number:</strong> 4091927348</p>
+    </div>
+
+    <p>Once the payment is made, click the button below to send your proof of payment via WhatsApp and the screenshot of the item(s). Thank You:</p>
+    
+    <!-- WhatsApp Payment Proof Button -->
+    <button id="send-proof-btn" class="whatsapp-button">
+        Send Payment Proof on WhatsApp
+    </button>
+
+    <a href="{{ url_for('shop') }}" class="btn">Continue Shopping</a>
+</section>
+
+<script>
+    document.getElementById("send-proof-btn").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default behavior
+
+        // Get cart details from Jinja
+        let cartItems = JSON.parse('{{ cart|tojson|safe }}');  
+        let totalPrice = JSON.parse('{{ total_price|default(0) |tojson }}');
+
+        if (!cartItems || Object.keys(cartItems).length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        // Format cart items for WhatsApp message
+        let message = "Hello, I have made a payment for my order. Here are the details:\n\n";
+        Object.values(cartItems).forEach(item => {
+            message += `🛍 ${item.quantity}x ${item.name} - ₦${(item.price * item.quantity).toLocaleString()}\n`;
+        });
+        message += `\n💰 *Total Amount Paid: ₦${totalPrice.toLocaleString()}*`;
+        message += `\n🧾 *Here is my proof of payment.*`;
+
+        // Encode message for WhatsApp
+        let encodedMessage = encodeURIComponent(message);
+        let phoneNumber = "2347018692863"; // Replace with your wife's WhatsApp number
+        let whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        // Open WhatsApp in a new tab
+        window.open(whatsappURL, "_blank");
+
+        // 🛒 Clear the cart in Flask
+        fetch('/clear-cart', { method: 'POST' })  
+            .then(response => response.json())
+            .then(data => {
+                console.log("Cart cleared:", data.message);
+
+                // 🔄 Redirect after WhatsApp opens
+                setTimeout(function() {
+                    window.location.href = "/shop"; 
+                }, 2000);
+            })
+            .catch(error => console.error("Error clearing cart:", error));
+    });
+</script>
+{% endblock %}

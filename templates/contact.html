@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="contact">
+    <h1>Contact Us</h1>
+    <p>Have questions or need assistance? We'd love to hear from you!</p>
+    
+    <form id="whatsapp-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+
+<script>
+    document.getElementById("whatsapp-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var message = document.getElementById("message").value.trim();
+
+        var phoneNumber = "2347018692863"; // Replace with your wife's WhatsApp number
+
+        if (name === "" || email === "" || message === "") {
+            alert("Please fill in all fields before sending.");
+            return;
+        }
+
+        var whatsappMessage = `Hello, my name is ${name}. My email is ${email}. Here is my message: ${message}`;
+        var encodedMessage = encodeURIComponent(whatsappMessage);
+        var whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        // 🟢 Redirect to WhatsApp immediately
+        let whatsappTab = window.open(whatsappURL, "_blank");
+
+         // Wait 5 seconds, then redirect to contact page
+         setTimeout(function() {
+            window.location.reload(); // Refreshes the page
+        }, 5000);
+    });
+</script>
+{% endblock %}

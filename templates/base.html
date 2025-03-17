@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FummyLuxe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">FummyLuxe</a>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('cart') }}">Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <div class="footer-content">
+          <p>Follow us on social media:</p>
+          <div class="social-links">
+            <a href="https://instagram.com/fummyluxe" target="_blank">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://tiktok.com/@fummyluxe" target="_blank">
+              <i class="fab fa-tiktok"></i> TikTok
+            </a>
+          </div>
+          <p>&copy; 2024 FummyLuxe. All rights reserved.</p>
+        </div>
+      </footer>
+      <script>
+        function updateCartCount() {
+            fetch('/cart-count')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('cart-count').innerText = data.total_items;
+                });
+        }
+    
+        // Call this function when the page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

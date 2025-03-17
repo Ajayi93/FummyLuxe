@@ -1,0 +1,314 @@
+/* Import Playfair Display font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* Apply Playfair Display to all text */
+body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, textarea, label {
+    font-family: 'Playfair Display', serif !important;
+}
+
+body {
+    font-family: 'Playfair Display', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+nav {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo a {
+    color: white !important;
+    text-decoration: none;
+    font-size: 28px; /* Increase the size */
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex; /* Makes the menu horizontal */
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white !important;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+nav ul li a:hover {
+    color: gold;
+}
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero .tagline {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.shop-now {
+    padding: 12px 30px;
+    background-color: gold;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.featured-products {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fafafa;
+}
+
+.featured-products h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.products img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about img {
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.featured-image {
+    width: 150px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.shop {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.add-to-cart-btn {
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Global button styling for all buttons */
+.btn {
+    background-color: #D4AF37; /* Gold */
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px 5px;
+}
+
+.btn:hover {
+    background-color: #b8952e; /* Darker gold on hover */
+    transform: translateY(-2px);
+}
+
+.cart-buttons .btn {
+    background-color: #d4af37; /* Gold color, you can change to any color you like */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cart-buttons .btn:hover {
+    background-color: #b08a2e; /* Darker shade for hover effect */
+}
+
+.about, .contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact label {
+    margin-top: 15px;
+}
+
+.contact input, .contact textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact button {
+    margin-top: 20px;
+}
+
+.about {
+    padding: 50px 20px;
+}
+
+.about-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    flex: 0 0 250px; /* fixed size */
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer .social-links a:hover {
+    text-decoration: underline;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+.social-links i {
+    font-size: 18px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #D4AF37; /* Gold color */
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px; /* Same as other buttons */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.whatsapp-button:hover {
+    background-color: #b8982d; /* Darker gold */
+    transform: scale(1.05);
+}

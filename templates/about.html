@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="about">
+    <h2 class="about-title">About Fummyluxe</h2>
+    <div class="about-content">
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="About FummyLuxe">
+        </div>
+        <div class="about-text">
+            <p>
+                At FummyLuxe, we believe that luxury is not just about fashion—it’s about how you feel.
+                Our brand was born out of a passion for <strong>elegance, sophistication, and timeless style</strong>,
+                with a special focus on <strong>Boubou and Kaftan designs</strong> that celebrate culture, comfort, and confidence.
+            </p>
+            <p>
+                Each piece is carefully crafted in <strong>Nigeria</strong>, using high-quality fabrics and expert craftsmanship
+                to ensure <strong>style, durability, and comfort</strong>. Whether you're dressing up for a special occasion
+                or looking for effortless everyday elegance, FummyLuxe is here to help you make a statement.
+                We are proud to offer <strong>worldwide shipping</strong>, bringing African luxury fashion to women around the globe.
+            </p>
+            <p class="fw-bold">📍 Made in Nigeria | Shipping Worldwide.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

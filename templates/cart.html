@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="cart">
+    <h1>Your Cart</h1>
+    {% if cart %}
+        <ul>
+            {% for item in cart %}
+                <li>
+                    <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}" width="100">
+                    {{ item.name }} x{{ item.quantity }} - &#8358;{{ item.price * item.quantity }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p><strong>Total: &#8358;{{ total_price }}</strong></p>
+
+        <!-- Buttons wrapper -->
+        <div class="cart-buttons">
+            <!-- ✅ Replace the old "Clear Cart" link with a form -->
+            <form id="clear-cart-form">
+                <button type="submit" class="btn">Clear Cart</button>
+            </form>
+            <a href="{{ url_for('manual_payment') }}" class="btn">Proceed to Payment</a>
+            <a href="{{ url_for('shop') }}" class="btn">Continue Shopping</a>
+        </div>
+
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="{{ url_for('shop') }}" class="btn">Continue Shopping</a>
+    {% endif %}
+</section>
+
+<!-- ✅ JavaScript for clearing the cart -->
+<script>
+document.getElementById("clear-cart-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    fetch('/clear-cart', { method: 'POST' }) // Ensure this is a POST request
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to clear cart");
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Cart cleared:", data.message);
+        location.reload(); // Refresh the page after clearing the cart
+    })
+    .catch(error => console.error("❌ Error clearing cart:", error));
+});
+</script>
+
+{% endblock %}
