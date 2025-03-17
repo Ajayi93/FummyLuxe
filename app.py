@@ -22,7 +22,7 @@ products = [
     {'id': 12, 'name': 'Pleated Silk Boubou', 'description': 'Fits up to size 16.', 'price': 25000, 'image': 'product12.jpg'},
     {'id': 13, 'name': 'Pattern Silk Boubou', 'description': 'Fits up to size 18.', 'price': 25000, 'image': 'product13.jpg'},    
     {'id': 14, 'name': 'Pattern Silk Boubou', 'description': 'Fits up to size 18.', 'price': 25000, 'image': 'product14.jpg'},
-    {'id': 15, 'name': 'Pleated Silk Boubou', 'description': 'Fits up to size 18.', 'price': 30000, 'image': 'product15.jpg'},
+    {'id': 15, 'name': 'Pleated Silk Boubou', 'description': 'Fits up to size 18.', 'price': 30000, 'image': 'Product15.jpg'},
     {'id': 16, 'name': 'Pleated Silk Boubou', 'description': 'Fits up to size 16.', 'price': 25000, 'image': 'product16.jpg'}
 ]
 
