@@ -2,7 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import urllib.parse
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
+import os
+
+app.secret_key = os.getenv('SECRET_KEY', 'fallback_secret_key')
 
 # Example product data
 products = [
