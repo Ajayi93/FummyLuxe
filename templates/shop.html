@@ -6,13 +6,13 @@
     <div class="products">
         {% if products %}
             {% for product in products %}
-            <div class="product">
+            <div class="product-card">  <!-- Change "product" to "product-card" -->
                 <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.description }}</p>
-                <p><strong>&#8358;{{ product.price }}</strong></p>
+                <h3 class="product-title">{{ product.name }}</h3>  <!-- Add class -->
+                <p class="product-description">{{ product.description }}</p>  <!-- Add class -->
+                <p class="price"><strong>&#8358;{{ product.price }}</strong></p>
                 <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
-                    <button type="submit" class="btn">Add to Cart</button>
+                    <button type="submit" class="btn">Add to Cart</button>  <!-- Add class -->
                 </form>
             </div>
             {% endfor %}
